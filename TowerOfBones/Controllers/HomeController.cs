@@ -23,6 +23,20 @@ namespace TowerOfBones.Controllers
 			return View();
 		}
 
+		[HttpGet]
+		public IActionResult Login()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Login(User user) 
+		{
+			// do the actual authentication
+			// return to Login page if invalid
+			return View("Index"); // return to home page if valid user
+		}
+
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
