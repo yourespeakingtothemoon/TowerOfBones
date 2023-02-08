@@ -1,13 +1,19 @@
-﻿class Tile {
-    constructor(position, size, image, imagepPosition) {
-        this.position = position;
-        this.size = size;
-        this.image = image;
-        this.imagepPosition = imagepPosition;
-    }
+﻿function Tile(position, size, imageName, imageLocation, type) {
+    this.position = position;
+    this.size = size;
+    this.imageName = imageName;
+    this.imageLocation = imageLocation;
+    this.type = type;
 
-    show() {
-        fill(20, 100, 20)
+    this.show = function () {
+        switch (type) {
+            case 0:
+                fill(20, 20, 100);
+                break;
+            case 1:
+                fill(20, 100, 20);
+                break;
+        }
         rect(this.position.x, this.position.y, this.size.x, this.size.y);
     }
 }
