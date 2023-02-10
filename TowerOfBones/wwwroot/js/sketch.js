@@ -1,6 +1,6 @@
 function setup() {
     createCanvas(800, 600);
-    GameManager = new GameManger(null, null);
+    GameManager = new GameManger();
     GameManager.setup();
 }
 

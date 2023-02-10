@@ -7,6 +7,7 @@
     }
 
     this.update = function () {
+        this.ScreenManager.update();
         this.ScreenManager.show();
         this.player.update();
         this.player.show();
