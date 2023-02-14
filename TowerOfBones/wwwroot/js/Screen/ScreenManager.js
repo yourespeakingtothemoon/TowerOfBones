@@ -11,37 +11,44 @@
         this.CurrentScreen.show();
     }
 
+    // this will need to be changed to work with the game manager
     this.update = function () {
         if (keyIsDown(LEFT_ARROW)) {
-            this.CurrentScreen.moveTiles(createVector(5, 0));
+            //this.CurrentScreen.moveTiles(createVector(7, 0));
         }
         if (keyIsDown(RIGHT_ARROW)) {
-            this.CurrentScreen.moveTiles(createVector(-5, 0));
+            //this.CurrentScreen.moveTiles(createVector(-7, 0));
         }
     }
 
+    // creates the floor from all of the screens
     this.randomizeLevel = function () {
         let length = floor(random(2, 4)); // how many screens long
-        let screen = 0;
-        let randomScreenTiles = [];
+        let screen = 0; // used for the randomization
+        let randomScreenTiles = []; // final array of tile numbers
+
+        // the stupid javascript thing where you cant make a 2d array normally 
         for (let i = 0; i < screens[screen].tiles.length; i++) {
             randomScreenTiles[i] = [];
         } // all screens will need to be the same hight
+
+
         for (let l = 0; l < length; l++) {
             for (let i = 0; i < screens[screen].tiles.length; i++) {
                 for (let j = 0; j < screens[screen].tiles[i].length; j++) {
+                    // the only way that i can think to add on to an existing 2d array
                     append(randomScreenTiles[i], screens[screen].tiles[i][j]);
                 }
             }
             if (!screens[screen].IsEnd) {
+                // find the next screen from the children screens
                 screen = screens[screen].Children[floor(random(screens[screen].Children.length))].position;
             }
             else {
                 break;
             }
         }
-        //console.log(randomScreenTiles);
+        // create the screen from the tile numbers
         this.CurrentScreen = new Screen(randomScreenTiles);
-        //console.log(this.CurrentScreen);
     }
 }
