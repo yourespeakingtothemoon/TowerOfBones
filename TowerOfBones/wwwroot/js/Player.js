@@ -12,7 +12,6 @@
     }
 
     this.update = function () {
-        // dont worry about all of this being commented out i will add velocity back in eventually
         //     if(!this.colliding.u || !this.colliding.r || !this.colliding.d || !this.colliding.l)
         //       {
         //         this.velocity = createVector(this.velocity.x * 0.8, this.velocity.y + this.terminalVelocity.y);
@@ -69,12 +68,6 @@
         if (!this.onSurface.d) {
             this.position.y += 3;
         }
-        if (keyIsDown(RIGHT_ARROW) && !this.onSurface.r) {
-            this.position.x += 5;
-        }
-        if (keyIsDown(LEFT_ARROW) && !this.onSurface.l) {
-            this.position.x -= 5;
-        }
         if (keyIsDown(UP_ARROW) && (!this.onSurface.u)) {
             this.position.y -= 20
         }
@@ -92,6 +85,24 @@
         if (!this.colliding.r) {
             this.onSurface.r = false;
         }
+        this.position.x = constrain(this.position.x, 0, 750);
+        this.position.y = constrain(this.position.y, 0, 500);
+    }
+
+    this.move = function () {
+        if (keyIsDown(RIGHT_ARROW) && !this.onSurface.r) {
+            this.position.x += 7;
+        }
+        if (keyIsDown(LEFT_ARROW) && !this.onSurface.l) {
+            this.position.x -= 7;
+        }
+    }
+
+    this.isInCenter = function () {
+        if (this.position.x >= 395 && this.position.x <= 405) {
+            return true;
+        }
+        return false;
     }
 
     // move the player to the surface of the object

@@ -19,6 +19,26 @@
         if (keyIsDown(RIGHT_ARROW)) {
             //this.CurrentScreen.moveTiles(createVector(-7, 0));
         }
+        if (keyIsDown(32)) {
+            console.log(this.CurrentScreen.tiles[0][0].position.x)
+            console.log(this.CurrentScreen.tiles[0][this.CurrentScreen.tiles[0].length - 1].position.x);
+        }
+    }
+
+    this.move = function () {
+        if (keyIsDown(RIGHT_ARROW) && this.CurrentScreen.tiles[0][this.CurrentScreen.tiles[0].length - 1].position.x != 750) {
+            this.CurrentScreen.moveTiles(createVector(-5, 0));
+        }
+        if (keyIsDown(LEFT_ARROW) && this.CurrentScreen.tiles[0][0].position.x != 0) {
+            this.CurrentScreen.moveTiles(createVector(5, 0));
+        }
+    }
+
+    this.onEdge = function () {
+        if (this.CurrentScreen.tiles[0][0].position.x == 0 ||
+            this.CurrentScreen.tiles[0][this.CurrentScreen.tiles[0].length - 1].position.x == 750) {
+            return true;
+        }
     }
 
     // creates the floor from all of the screens
