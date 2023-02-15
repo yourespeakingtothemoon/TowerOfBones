@@ -64,13 +64,20 @@
         //     this.velocity.x = constrain(this.velocity.x, -5, 5)
         //     this.position.x += this.velocity.x;
         //     this.position.y += this.velocity.y;
-
+        this.velocity = createVector(0, constrain(this.velocity.y, 0, 15));
         if (!this.onSurface.d) {
-            this.position.y += 3;
+            this.velocity.y += 0.3;
+            //this.position.y += 3;
+        }
+        else {
+            this.velocity.y = 0;
         }
         if (keyIsDown(UP_ARROW) && (!this.onSurface.u)) {
-            this.position.y -= 20
+            this.velocity.y = -20;
+            //this.position.y -= 20
         }
+
+        this.position.y += this.velocity.y
 
         // reset the onSurface
         if (!this.colliding.d) {
