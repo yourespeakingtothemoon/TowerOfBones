@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model User
+
+<H1>@Model.Username 's latest Acheivments</H1>
+<div class="ach-big">
+<img class="ach-icn" src="~/images/@Model.Earned[0].Image" alt="Acheivment Icon" />
+<h3>@Model.Earned[0].Name</h3>
+<h5>@Model.Earned[0].Description</h5>
+</div>
+@for (int i = 1; i < 3; i++)
+{
+    <div class="ach-small">
+		<img class="ach-icn-small" src="~/images/@Model.Earned[i].Image" alt="Acheivment Icon" />
+		<h4>@Model.Earned[i].Name</h4>
+		<p>@Model.Earned[i].Description</p>
+	</div>
+}

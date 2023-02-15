@@ -15,11 +15,30 @@ namespace TowerOfBones.Models
         [MaxLength(255)]
         [MinLength(8)]
         public string Password { get; set; }
-        [ForeignKey("AchievementID")] // i have no clue how foreign keys work in mvc. i think that this is correct but idk
-        public virtual Achievement[] Achievement { get; set; }
-        // there will probably need to be more things here like preferences and maybe stats or something
+		//[ForeignKey("AchievementID")] // i have no clue how foreign keys work in mvc. i think that this is correct but idk
 
-        public User() { }
+		//each earned achievement will be pushed to front so that the most recent achievement is at the top
+        //maybe change this to a list later
+		public virtual Achievement[] Earned { get; set; }
+
+        //for big ach page only
+        public virtual Achievement[] Locked { get; set; }
+       //will create more robust acheivment system for this later
+		// there will probably need to be more things here like preferences and maybe stats or something
+
+		public User(int id, string username, string password) { 
+
+
+			UserID = id;
+			Username = username;
+			Password = password;
+			Earned = new Achievement[0];
+			Locked = new Achievement[0];
+            
+			//Achievement = ach;
+			//just need constructor so I can scaffold views
+
+		}
 
     }
 }

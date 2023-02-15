@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TowerOfBones.Models;
 
@@ -30,6 +30,7 @@ namespace TowerOfBones.Controllers
 		}
 
 		[HttpPost]
+		//Card System: have this pop up on index page when not logged in, have sign up card there as well
 		public IActionResult Login(User user) 
 		{
 			// do the actual authentication
