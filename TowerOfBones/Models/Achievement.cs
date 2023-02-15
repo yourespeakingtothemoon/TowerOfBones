@@ -12,6 +12,8 @@ namespace TowerOfBones.Models
         [Required]
         public string Description { get; set; }
 
-        public Achievement() { }
+		public string? Image { get; set; }
+
+		public Achievement() { }
     }
 }
