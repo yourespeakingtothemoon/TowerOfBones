@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!-- create table based on highscore and user models -->
+<table>
+    <tr>
+		<!-- create table headers -->
+		<th>Rank</th>
+		<th>Username</th>
+		<th>Score</th>
+    </tr>
+	<!-- loop through highscore list -->
+	@foreach (var highscore in Model)
+	{
+		<!-- create table row -->
+		<tr>
+			<!-- create table data -->
+			<td>@highscore.Rank</td>
+			<td>@highscore.Username</td>
+			<td>@highscore.Score</td>
+		</tr>
+	}
+
+	<!-- styling note: header is accent 2, and all other rows alternate between light accent and dark accent colors (complementary) -->
+    <!--Can I do it? note: make header clickable to reorder leaderboard-->
+</table>

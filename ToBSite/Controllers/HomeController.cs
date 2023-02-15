@@ -1,8 +1,8 @@
-﻿ using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using TowerOfBones.Models;
+using ToBSite.Models;
 
-namespace TowerOfBones.Controllers
+namespace ToBSite.Controllers
 {
 	public class HomeController : Controller
 	{
@@ -21,21 +21,6 @@ namespace TowerOfBones.Controllers
 		public IActionResult Privacy()
 		{
 			return View();
-		}
-
-		[HttpGet]
-		public IActionResult Login()
-		{
-			return View();
-		}
-
-		[HttpPost]
-		//Card System: have this pop up on index page when not logged in, have sign up card there as well
-		public IActionResult Login(User user) 
-		{
-			// do the actual authentication
-			// return to Login page if invalid
-			return View("Index"); // return to home page if valid user
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
