@@ -25,6 +25,8 @@ namespace TowerOfBones.Models
         public int HiLevel { get; set; } = 0;
 		public int HiDebt { get; set; } = 0;
 
+		public Boolean IsActive { get; set; } = false;
+
 
 
 		//each earned achievement will be pushed to front so that the most recent achievement is at the top
