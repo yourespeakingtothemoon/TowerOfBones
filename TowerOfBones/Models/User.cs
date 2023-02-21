@@ -31,21 +31,28 @@ namespace TowerOfBones.Models
 
 		//each earned achievement will be pushed to front so that the most recent achievement is at the top
 		//maybe change this to a list later
-		public virtual Achievement[] Earned { get; set; }
+		public List<Achievement> Earned { get; set; }
 
         //for big ach page only
-        public virtual Achievement[] Locked { get; set; }
-       //will create more robust acheivment system for this later
+        public List<Achievement> Locked { get; set; }
+		//will create more robust acheivment system for this later
 		// there will probably need to be more things here like preferences and maybe stats or something
 
-		public User(int id, string username, string password) { 
+		public User(string username, string password, string bio, int hiLevel, int hiDebt, Boolean isActive, List<Achievement> earned, List<Achievement> locked)
+		{ 
 
 
-			UserID = id;
+			//UserID = id;
 			Username = username;
 			Password = password;
-			Earned = new Achievement[0];
-			Locked = new Achievement[0];
+			Bio = bio;
+			HiLevel = hiLevel;
+			HiDebt = hiDebt;
+			IsActive = isActive;
+			Earned = earned;
+			Locked = locked;
+			//Earned = new Achievement[0];
+			//Locked = new Achievement[0];
             
 			//Achievement = ach;
 			//just need constructor so I can scaffold views

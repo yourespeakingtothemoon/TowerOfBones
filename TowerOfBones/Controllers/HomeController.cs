@@ -6,6 +6,15 @@ namespace TowerOfBones.Controllers
 {
 	public class HomeController : Controller
 	{
+
+
+
+		public User testUsr = new User("Test User", "1234", "test user to test features of the website", 2, 200, true, new List<Achievement>() { new Achievement("First Achievement", "You did something!", "1.png") }, new List<Achievement>() { new Achievement("Second Achievement", "You did something!", "1.png"),
+			 new Achievement("Third Achievement", "You did something!", "1.png"),
+			 new Achievement("Fourth Achievement", "You did something!", "1.png"),
+			 new Achievement("Fifth Achievement", "You did something!", "1.png") });
+
+
 		private readonly ILogger<HomeController> _logger;
 
 		public HomeController(ILogger<HomeController> logger)
@@ -23,6 +32,11 @@ namespace TowerOfBones.Controllers
 			return View();
 		}
 
+		public IActionResult Profile()
+		{
+			return View(testUsr);
+		}
+
 		[HttpGet]
 		public IActionResult Login()
 		{
@@ -31,7 +45,7 @@ namespace TowerOfBones.Controllers
 
 		[HttpPost]
 		//Card System: have this pop up on index page when not logged in, have sign up card there as well
-		public IActionResult Login(User user) 
+		public IActionResult Login(User user)
 		{
 			// do the actual authentication
 			// return to Login page if invalid
