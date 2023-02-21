@@ -15,10 +15,20 @@ namespace TowerOfBones.Models
         [MaxLength(255)]
         [MinLength(8)]
         public string Password { get; set; }
-		//[ForeignKey("AchievementID")] // i have no clue how foreign keys work in mvc. i think that this is correct but idk
+        //[ForeignKey("AchievementID")] // i have no clue how foreign keys work in mvc. i think that this is correct but idk
+
+        [Required]
+        public int pfpID = 1;
+
+		public string Bio { get; set; }
+
+        public int HiLevel { get; set; } = 0;
+		public int HiDebt { get; set; } = 0;
+
+
 
 		//each earned achievement will be pushed to front so that the most recent achievement is at the top
-        //maybe change this to a list later
+		//maybe change this to a list later
 		public virtual Achievement[] Earned { get; set; }
 
         //for big ach page only
@@ -40,5 +50,11 @@ namespace TowerOfBones.Models
 
 		}
 
-    }
+		public string getPfpFile()
+        {
+			return "pfp" + pfpID + ".png";
+		}
+
+
+	}
 }
