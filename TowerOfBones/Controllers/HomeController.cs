@@ -1,6 +1,9 @@
 ﻿ using Microsoft.AspNetCore.Mvc;
+using MongoDB.Driver;
+using MongoDB;
 using System.Diagnostics;
 using TowerOfBones.Models;
+using TowerOfBones.DAL;
 
 namespace TowerOfBones.Controllers
 {
@@ -9,10 +12,15 @@ namespace TowerOfBones.Controllers
 
 
 
-		public User testUsr = new User("Test User", "1234", "test user to test features of the website", 2, 200, true, new List<Achievement>() { new Achievement("First Achievement", "You did something!", "1.png") }, new List<Achievement>() { new Achievement("Second Achievement", "You did something!", "1.png"),
+		public static User testUsr = new User("Test User", "1234", "test user to test features of the website", 2, 200, true, new List<Achievement>() { new Achievement("First Achievement", "You did something!", "1.png") }, new List<Achievement>() { new Achievement("Second Achievement", "You did something!", "1.png"),
 			 new Achievement("Third Achievement", "You did something!", "1.png"),
 			 new Achievement("Fourth Achievement", "You did something!", "1.png"),
 			 new Achievement("Fifth Achievement", "You did something!", "1.png") });
+
+		DataAccessLayer dali = new DataAccessLayer();
+		
+
+
 
 
 		private readonly ILogger<HomeController> _logger;
@@ -24,6 +32,8 @@ namespace TowerOfBones.Controllers
 
 		public IActionResult Index()
 		{
+			List<User> users = dali.GetUsers();
+			testUsr = users.First();
 			return View();
 		}
 

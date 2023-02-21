@@ -7,31 +7,39 @@
 @{
 	ViewData["Title"] =  Model.Username+ "'s Profile";
 }
-<div class="d-inline-block">
-<H1>@Model.Username 's latest Acheivments</H1>
-<div class="ach-big">
+<div class="row">
+	<div class="col">
+<H5>@Model.Username 's latest Acheivments</H5>
+<div class="ach-big col">
+	<div class="row">
 	<img class="ach-icn" src="~/images/@Model.Earned[0].Image" alt="Acheivment Icon" />
 	<h3>@Model.Earned[0].Name</h3>
+			</div>
 	<h5>@Model.Earned[0].Description</h5>
 </div>
 
 @for (int i = 1; i < 3; i++)
 {
-	<div class="ach-small">
+	<div class="ach-small col">
 		@if(Model.Earned.Count() < 1){
+					<div class="row">
 		<img class="ach-icn-small" src="~/images/@Model.Earned[i].Image" alt="Acheivment Icon" />
 		<h4>@Model.Earned[i].Name</h4>
+		</div>
 		<p>@Model.Earned[i].Description</p>
 		}
 		else{
+					<div class="row">
 			<img class="ach-icn-small" src="~/images/ach-locked.png" alt="Acheivment Icon" />
 				<h4>@Model.Locked[i].Name</h4>
-				<p>@Model.Locked[i].Description</p>
+				</div>
+				<p>This Achievement is locked</p>
 		}
 		</div>
-
-}</div>
-<div class="d-inline-block">
+		
+}
+	</div>
+	<div class="col">
 	<img src="~/img/pfp/@Model.getPfpFile()" alt="@Model.Username Profile Picture" />
 	<h4>@Model.Username</h4>
 	@if(Model.IsActive)
@@ -45,4 +53,5 @@
 	<p>@Model.Bio</p>
 	<h5>Highest Level: @Model.HiLevel</h5>
 	<h5>Highest Debt Reached: $@Model.HiDebt</h5>
+	</div>
 </div>
