@@ -32,8 +32,9 @@ namespace TowerOfBones.Controllers
 
 		public IActionResult Index()
 		{
-			List<User> users = dali.GetUsers();
-			testUsr = users.First();
+			//need to read up on how the MongoClient works in .NET before this works
+		//	List<User> users = dali.GetUsers();
+			//testUsr = users.First();
 			return View();
 		}
 
