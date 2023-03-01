@@ -19,16 +19,16 @@
 			switch(weather)
 			{
 				case Weather.SNOW:
-					Story = "It was a cold and snowy day. The contemporary jazz classic Skating by Vince Guaraldi was playing on the loudspeakers. ";
+					Story = "It was a cold and snowy day. The contemporary jazz classic Skating by Vince Guaraldi was playing on the loudspeakers. <br />";
 					break;
 				case Weather.CLOUDY:
-					Story = "It was a cloudy day. The pop classic California Dreamin' by the Mommas and Poppas was playing on the loudspeakers. ";
+					Story = "It was a cloudy day. The pop classic California Dreamin' by the Mommas and Poppas was playing on the loudspeakers. <br />";
 					break;
 				case Weather.RAIN:
-					Story = "It was a rainy day. The Disney classic Little April Showers from the film Bambi was playing on the loudspeakers. ";
+					Story = "It was a rainy day. The Disney classic Little April Showers from the film Bambi was playing on the loudspeakers. <br />";
 					break;
 				case Weather.SUNNY:
-					Story = "It was a bright and sunny day. The nerd rock classic Holiday by Weezer was playing on the loudspeakers. ";
+					Story = "It was a bright and sunny day. The nerd rock classic Holiday by Weezer was playing on the loudspeakers. <br />";
 					break;
 				case Weather.INSANEO_STYLE:
 					Story = "The day was totally insaneo style. ";
@@ -45,7 +45,7 @@
 
 			}
 			
-			int random = new Random().Next(1, 6);
+			int random = new Random().Next(1, 7);
 			switch (random)
 			{
 				case 1:
@@ -72,7 +72,7 @@
 					break;
 			}
 
-			Story += " Join Spooky on his epic quest to retrieve his golden monocle, prove your skills in this exciting new game, put your gaming skills to the test and battle your way through an endless department store filled with danger, show off your skills as a gamer and take on the challenge - play now!";
+			//Story += "<br/> Join Spooky on his epic quest to retrieve his golden monocle, prove your skills in this exciting new game, put your gaming skills to the test and battle your way through an endless department store filled with danger, show off your skills as a gamer and take on the challenge - play now!";
 
 
 		}

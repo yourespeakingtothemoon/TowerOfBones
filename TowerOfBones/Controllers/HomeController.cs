@@ -5,6 +5,8 @@ using System.Diagnostics;
 using TowerOfBones.Models;
 using TowerOfBones.DAL;
 
+using Microsoft.JSInterop;
+
 namespace TowerOfBones.Controllers
 {
 	public class HomeController : Controller
@@ -54,6 +56,59 @@ namespace TowerOfBones.Controllers
 			return View();
 		}
 
+		public IActionResult Story()
+		{
+			WeatherNet.ClientSettings.SetApiKey("324b97110943279b777a4de1e5ea9f13");
+
+			DaStory storytext;
+			//https://api.open-meteo.com/v1/forecast?latitude=40.77&longitude=-111.89&hourly=rain,showers,snowfall,weathercode,cloudcover
+			String wAPI;
+			//int longi = LocationService.GetLongitude();
+			//	int lat = LocationService.GetLatitude();
+			GoogleApi.Entities.Maps.Geolocation.Request.GeolocationRequest req = new GoogleApi.Entities.Maps.Geolocation.Request.GeolocationRequest();
+			req.Key = "AIzaSyBASJdBhRwVCwkBprmQ_BK7rgOzpakLoFo";
+			double longi = GoogleApi.GoogleMaps.Geolocation.Query(req).Location.Longitude;
+			double lat = GoogleApi.GoogleMaps.Geolocation.Query(req).Location.Latitude;
+			/*	wAPI = "https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + longi + "&hourly=weathercode";
+				HttpClient httpClient;
+				httpClient = new HttpClient();
+				HttpResponseMessage response = httpClient.GetAsync(wAPI).Result;
+				string json = response.Content.ReadAsStringAsync().Result;
+				WeatherCodes weather 
+			*/
+			DaStory.Weather weat;
+			var current = WeatherNet.Clients.CurrentWeather.GetByCoordinates(lat, longi);
+			if(current.Success)
+			{
+				switch(current.Item.Title.ToLower())
+				{
+					case "clear":
+						weat = DaStory.Weather.SUNNY;
+						break;
+					case "rain":
+					case "drizzle":
+						weat = DaStory.Weather.RAIN;
+						break;
+					case "snow":
+						weat = DaStory.Weather.SNOW;
+						break;
+					case "clouds":
+						weat = DaStory.Weather.CLOUDY;
+						break;
+					default:
+						weat = DaStory.Weather.INSANEO_STYLE;
+						break;
+				}
+			}
+			else
+			{
+				weat = DaStory.Weather.INSANEO_STYLE;
+			}
+			storytext = new DaStory(weat);
+
+			return View(storytext);
+
+		}
 		[HttpPost]
 		//Card System: have this pop up on index page when not logged in, have sign up card there as well
 		public IActionResult Login(User user)

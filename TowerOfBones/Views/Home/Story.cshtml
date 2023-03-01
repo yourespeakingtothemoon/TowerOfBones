@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+	@model TowerOfBones.Models.DaStory;
+	ViewData["Title"] = "The Story So Far...";
+}
+
+<center>
+<h2>The Story So Far...</h2>
+<img class="storyframe" src="~/img/story/story1.png" alt="he lost it" />
+<p>"No! No! No!!! My prized monocle!!!!!"</p> 
+<h4>@Model.Story</h4>
+	<img class="storyframe" src="~/img/story/story2.png" alt="he will find it" />
+	<h4>Join Spooky on his epic quest to retrieve his golden monocle, prove your skills in this exciting new game, put your gaming skills to the test and battle your way through an endless department store filled with danger, show off your skills as a gamer and take on the challenge - play now!</h4>
+</center>

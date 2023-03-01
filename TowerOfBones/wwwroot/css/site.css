@@ -31,3 +31,8 @@ body {
     .dropdown-pfp:hover {
         border: 3px solid #258cfb;
     }
+
+    .storyframe
+    {
+        width: 50%;
+    }
