@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Money
+  - Jumpable
+  - Enemy
+  - PlayerDamage
+  - Ledge
   layers:
   - Default
   - TransparentFX
